@@ -110,7 +110,7 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
 > [!NOTE]
 > デストラクタなし  
 
-#### Ⅱ-ⅳ-1.TactSwitchDTS6V
+#### Ⅱ-ⅳ-1.TactSwitchDTS6V()
 1. 引数
 
 |No |ID |Type |Value |Optional |Abstract |
@@ -153,7 +153,7 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
 > [!TIP]
 > 引数 inputPin で指定するピンについて。Arduino UNO の場合外部割込み可能なピンは D2 もしくは D3 となるため、どちらかに接続すること。接続できない場合は setNoInterrupt() をコールして外部割込みなしとする必要がある  
 
-#### Ⅱ-ⅳ-2.startDetect
+#### Ⅱ-ⅳ-2.startDetect()
 1. 引数
 
 なし  
@@ -164,7 +164,7 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
   - ステータス変更ありを返す
 * それ以外の場合ステータス変更なしを返す
 
-#### Ⅱ-ⅳ-3.startWait
+#### Ⅱ-ⅳ-3.startWait()
 1. 引数
 
 |No |ID |Type |Value |Optional |Abstract |
@@ -177,7 +177,7 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
   - ステータス変更ありを返す
 * それ以外の場合ステータス変更なしを返す
 
-#### Ⅱ-ⅳ-4.startStandby
+#### Ⅱ-ⅳ-4.startStandby()
 1. 引数
 
 |No |ID |Type |Value |Optional |Abstract |
@@ -190,7 +190,7 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
   - ステータス変更ありを返す
 * それ以外の場合ステータス変更なしを返す
 
-#### Ⅱ-ⅳ-5.setLatency
+#### Ⅱ-ⅳ-5.setLatency()
 1. 引数
 
 |No |ID |Type |Value |Optional |Abstract |
@@ -201,7 +201,7 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
 * 引数の値でメンバ チャタリング防止レイテンシの値を更新する
   - 値の範囲は 0 ～ 50 (単位 :msec)とする
 
-#### Ⅱ-ⅳ-6.setHoldDown
+#### Ⅱ-ⅳ-6.setHoldDown()
 1. 引数  
 
 |No |ID |Type |Value |Optional |Abstract |
@@ -212,7 +212,7 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
 * 引数の値でメンバ 長押し判定時間閾値の値を更新する
   - 値の範囲は 1000 ～ 8000 (単位 :msec)とする
 
-#### Ⅱ-ⅳ-7.setNoInterrupt
+#### Ⅱ-ⅳ-7.setNoInterrupt()
 1. 引数  
 
 なし  
@@ -220,7 +220,7 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
 2. 処理概要  
 * メンバ 割り込み有無の値を false に設定する
 
-#### Ⅱ-ⅳ-8.startInterrupt
+#### Ⅱ-ⅳ-8.startInterrupt()
 1. 引数  
 
 なし  
@@ -232,7 +232,7 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
 * 処理ステータスが STAND-BY のとき、ステータスを DETECTING へ移行させる
   - メンバ ステータス変更時刻に現在の経過ミリ秒を設定する
 
-#### Ⅱ-ⅳ-9.getCondition
+#### Ⅱ-ⅳ-9.getCondition()
 1. 引数  
 
 なし  
@@ -253,5 +253,95 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
   - STAND BY への移行判定を行う
 
 ## Ⅲ.特記事項
-
+### Ⅲ-ⅰ.利用上の注意
 このクラスは Arduino での利用を想定しているため、他のマイコンボードでの動作は保証しない
+
+### Ⅲ-ⅱ.利用方法
+#### Ⅲ-ⅱ-1.外部割込み利用する場合
+
+1. setup() 内でクラスインスタンスを生成
+2. 外部割込みを定義し、割り込み時動作する関数から startInterrupt() メソッドをコールする
+
+```
+TactSwitchDTS6V* mySwitch;
+
+void setup() {
+    mySwitch = new TactSwitchDTS6V( 2, TactSwitchDTS6V::TYPE_PULLDOWN );
+    attachInterrupt( digitalPinToInterrupt( 2 ), chkSwitch, RISING );
+}
+
+void chkSwitch() {
+    mySwitch->startInterrupt();
+}
+```
+
+3. loop() 内でメソッド getCondition() をコールし、戻り値で状態判定を行う
+
+```
+void loop() {
+    int ret = mySwitch->getCondition();
+    // ret の値が
+    // RET_SHORTDOWN の場合、短く押された
+    // RET_HOLDDOWN の場合、長押しされた
+    // RET_PUSHING の場合、押されている(離されていない)
+    // RET_SKIP の場合、判定不可(離されているか、レイテンシの範囲内)
+}
+```
+
+#### Ⅲ-ⅱ-2.外部割込みが利用できない場合
+
+> [!IMPORTANT]
+> Aruduno UNO の場合、外部割込みに使用できるピンはデジタル 2,3 番ピンのみであることに注意  
+> デジタル 2,3 番ピンが使用できない場合は、setNoInterrupt() メソッドをコールして外部割込み無効に設定すること  
+> スイッチ押下時の検知精度が落ちる場合はレイテンシ調整すること  
+
+1. setup() 内でクラスインスタンスを生成
+2. setNoInterrupt() メソッドをコールする
+
+```
+TactSwitchDTS6V* mySwitch;
+
+void setup() {
+    mySwitch = new TactSwitchDTS6V( 2, TactSwitchDTS6V::TYPE_PULLDOWN );
+    mySwitch->setNoInterrupt();
+}
+```
+
+3. loop() 内でメソッド getCondition() をコールし、戻り値で状態判定を行う
+
+#### Ⅲ-ⅱ-3.レイテンシの調整
+
+- メソッド setLatency() で変更するレイテンシ値を設定する
+
+> [!CAUTION]
+> 値の上限は 50(msec) であり、範囲外の値を引数とした場合は変更されない
+
+```
+    // レイテンシを 40msec に設定する
+    setLatency( 40UL );
+
+    // 範囲外の場合変更されない
+    setLatency( 60UL );
+
+    // コンパイルエラー
+    setLatency( -10L );
+```
+
+#### Ⅲ-ⅱ-4.長押し判定閾値の調整
+
+- メソッド setHoldDown() で変更する長押し判定閾値を設定する
+
+> [!CAUTION]
+> 値の範囲は 1000(msec) から 8000(msec) であり、範囲外の値を引数とした場合は変更されない
+
+```
+    // 長押し判定閾値を 5000msec に設定する
+    setHoldDown( 5000UL );
+
+    // 範囲がの場合変更されない
+    setHoldDown( 100UL );
+    setHoldDown( 10000UL );
+
+    // コンパイルエラー
+    setHoldDown( -1000L );
+```
