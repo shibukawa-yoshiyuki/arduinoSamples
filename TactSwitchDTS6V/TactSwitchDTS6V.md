@@ -1,38 +1,24 @@
-::: cover
 # Tact Switch DTS6V Class 定義
 1.0 版  
 2024年10月11日  
-:::
 
 ## Ⅰ.概要
 Arduino 向けタクトスイッチ DTS6V 用クラス定義  
 1. プルアップ抵抗およびプルダウン抵抗を用いた回路どちらにも対応  
 
-::: imageBlock
 ![figure1-1](./img/TactSwitchDTS6V_pullup.png)  
-:::
-::: caption
-fig1-1 pull-up 回路の例
-:::
+**fig1-1 pull-up 回路の例**  
 
-::: imageBlock
 ![figure1-2](./img/TactSwitchDTS6V_pulldown.png)  
-:::
-::: caption
-fig1-2 pull-down 回路の例  
-:::
+**fig1-2 pull-down 回路の例**  
 
-2. 長押し/短押し判定あり
-1. スイッチ押下の判定は、外部割込みにて行う
+2. 長押し/短押し判定あり  
+1. スイッチ押下の判定は、外部割込みにて行う  
 1. 外部割込み使用できない場合でも使用可能  
 1. チャタリング対策は一定時間入力無効とすることで対応(fig1-3を参照)  
 
-::: imageBlock
 ![figure1-3](./img/fig1-3.png)  
-:::
-::: caption
-fig1-3 チャタリング対策  
-:::
+**fig1-3 チャタリング対策**  
 
 6. スイッチは状態 Stand-by 、 Detecting および Waiting を持つ
 1. 状態遷移条件は以下表を参照
@@ -110,9 +96,8 @@ fig1-3 チャタリング対策
 |8 |startInterrupt |pubric |void |割り込み時の判定 |
 |9 |getCondition |pubric |int |タクトスイッチ状態判定 |
 
-::: note    
-デストラクタなし  
-:::
+> [!NOTE]
+> デストラクタなし  
 
 #### Ⅱ-ⅳ-1.TactSwitchDTS6V
 1. 引数
@@ -126,9 +111,8 @@ fig1-3 チャタリング対策
 
 * コンストラクタとして呼ばれ、以下のメンバを初期化する
 
-::: warning
-引数のうち回路区分は省略可能。省略した場合は pull-up とみなしてデリゲートすること
-:::
+> [!WARNING]
+> 引数のうち回路区分は省略可能。省略した場合は pull-up とみなしてデリゲートすること
 
 |ID |Value |Note |
 |:---|---:|:---|
@@ -146,22 +130,17 @@ fig1-3 チャタリング対策
 |unconnected |HIGH |回路が pull-up の場合未入力は HIGH となる |
 |connected |LOW |回路が pull-up の場合入力時は LOW となる |
 
-::: caption  
-回路区分が TYPE_PULLUP の場合  
-:::
+**回路区分が TYPE_PULLUP の場合**  
 
 |ID |Value |Note |
 |:---|---:|:---|
 |unconnected |LOW |回路が pull-down の場合未入力は LOW となる |
 |connected |HIGH |回路が pull-down の場合入力時は HIGH となる |
 
-::: caption  
-回路区分が TYPE_PULLDOWN の場合  
-:::
+**回路区分が TYPE_PULLDOWN の場合**  
 
-::: hint  
-引数 inputPin で指定するピンについて。Arduino UNO の場合外部割込み可能なピンは D2 もしくは D3 となるため、どちらかに接続すること。接続できない場合は setNoInterrupt() をコールして外部割込みなしとする必要がある  
-:::
+> [!TIP]
+> 引数 inputPin で指定するピンについて。Arduino UNO の場合外部割込み可能なピンは D2 もしくは D3 となるため、どちらかに接続すること。接続できない場合は setNoInterrupt() をコールして外部割込みなしとする必要がある  
 
 #### Ⅱ-ⅳ-2.startDetect
 1. 引数
@@ -236,9 +215,8 @@ fig1-3 チャタリング対策
 なし  
 
 2. 処理概要  
-::: important  
-このメソッドは外部割込み利用するときにコールされる。attachInterrupt() にて本メソッドを呼ぶ割り込み処理を定義する必要がある  
-:::
+> [!IMPORTANT]
+> このメソッドは外部割込み利用するときにコールされる。attachInterrupt() にて本メソッドを呼ぶ割り込み処理を定義する必要がある  
 
 * 処理ステータスが STAND-BY のとき、ステータスを DETECTING へ移行させる
   - メンバ ステータス変更時刻に現在の経過ミリ秒を設定する
