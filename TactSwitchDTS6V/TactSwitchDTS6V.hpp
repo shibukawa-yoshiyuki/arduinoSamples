@@ -21,7 +21,7 @@ private:
     enum intarnalReturnValue {
         RET_CHANGED                  = 4,       // ステータス変更あり
         RET_NOCHANGE                            // ステータス変更なし
-    }
+    };
     const unsigned long DEF_LATENCY  = 30UL;    // レイテンシデフォルト値
     const unsigned long LATENCY_MAX  = 50UL;    // レイテンシ上限値
     const unsigned long DEF_HOLDDOWN = 2000UL;  // 長押し判定時間閾値デフォルト値
