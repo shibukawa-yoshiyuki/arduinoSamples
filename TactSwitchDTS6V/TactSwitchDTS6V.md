@@ -69,7 +69,10 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
 |No |ID |Access |Type |Value |Abstruct |
 |:---:|:---|:---|:---:|---:|:---|
 |1 |DEF_LATENCY |private |unsigned long |30UL |レイテンシ規定値 |
-|2 |DEF_HOLDDOWN |private |unsigned long |2000UL |長押し判定時間閾値規定値 |
+|2 |LATENCY_MAX |private |unsigned long |50UL |レイテンシ上限値 |
+|3 |DEF_HOLDDOWN |private |unsigned long |2000UL |長押し判定時間閾値規定値 |
+|4 |HOLDDOWN_MIN |private |unsigned long |1000UL |長押し判定時間閾値下限値 |
+|5 |HOLDDOWN_MAX |private |unsigned long |8000UL |長押し判定時間閾値上限値 |
 
 ### Ⅱ-ⅲ.変数
 |No |ID |Access |Type |Abstruct |

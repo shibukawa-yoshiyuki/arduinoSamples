@@ -42,7 +42,9 @@ static TactSwitchDTS6V::TactSwitchDTS6V( int inputPin, const int typePull ) {
 // Argument :   unsigned long invalue : レイテンシ
 // Return   :   n/a
 void TactSwitchDTS6V::setLatency( unsigned long inValue ) {
-    this->latency = inValue;
+    if( inValue <= LATENCY_MAX ) {
+        this->latency = inValue;
+    }
 }
 
 //
@@ -51,7 +53,9 @@ void TactSwitchDTS6V::setLatency( unsigned long inValue ) {
 // Argument :   unsigned long invalue : 長押し判定時間閾値
 // Return   :   n/a
 void TactSwitchDTS6V::setHoldDown( unsigned long inValue ) {
-    this->holdDownTime = inValue;
+    if( inValue >= HOLDDOWN_MIN && inValue <= HOLDDOWN_MAX ) {
+        this->holdDownTime = inValue;
+    }
 }
 
 //
