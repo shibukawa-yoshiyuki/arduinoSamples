@@ -1,8 +1,17 @@
 # Tact Switch DTS6V Class 定義
-1.0 版  
-2024年10月11日  
-
 ## Ⅰ.概要
+### Ⅰ-ⅰ クラスパラメータ
+
+|Parameter |Value |Note |
+|:---|---:|:---|
+|namespace |ElectronicComponent | |
+|template-spec |n/a | |
+|ms-decl-spec |n/a | |
+|tag |TactSwitchDTS6V | |
+|base |n/a | |
+|declarators |n/a | |
+
+### Ⅰ-ⅱ 処理概要
 Arduino 向けタクトスイッチ DTS6V 用クラス定義  
 1. プルアップ抵抗およびプルダウン抵抗を用いた回路どちらにも対応  
 
