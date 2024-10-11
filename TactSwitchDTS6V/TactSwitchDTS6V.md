@@ -185,7 +185,7 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
 |1 |detectTime |unsigned long |- |False |ステータス変更からの経過時間 |
 
 2. 処理概要
-* 処理ステータスが STAND-BY のとき、ステータスを STAND-BY へ移行させる
+* 処理ステータスが WAITING のとき、ステータスを STAND-BY へ移行させる
   - メンバ ステータス変更時刻に 0 を設定する  
   - ステータス変更ありを返す
 * それ以外の場合ステータス変更なしを返す
@@ -259,7 +259,7 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
 ### Ⅲ-ⅱ.利用方法
 #### Ⅲ-ⅱ-1.外部割込み利用する場合
 
-1. setup() 内でクラスインスタンスを生成
+1. setup() 内でクラスインスタンスを生成する。ピン番号および回路区分を指定すること(プルダウン抵抗を用いた場合 TYPE_PULLDOWN 、プルアップ抵抗を用いた場合省略するか TYPE_PULLUP を指定する)
 2. 外部割込みを定義し、割り込み時動作する関数から startInterrupt() メソッドをコールする
 
 ```
@@ -295,14 +295,14 @@ void loop() {
 > D2 もしくは D3 が使用できない場合は、setNoInterrupt() メソッドをコールして外部割込み無効に設定すること  
 > スイッチ押下時の検知精度が落ちる場合はレイテンシ調整すること  
 
-1. setup() 内でクラスインスタンスを生成
+1. setup() 内でクラスインスタンスを生成する。ピン番号および回路区分を指定すること(プルダウン抵抗を用いた場合 TYPE_PULLDOWN 、プルアップ抵抗を用いた場合省略するか TYPE_PULLUP を指定する)
 2. setNoInterrupt() メソッドをコールする
 
 ```
 TactSwitchDTS6V* mySwitch;
 
 void setup() {
-    mySwitch = new TactSwitchDTS6V( 2, TactSwitchDTS6V::TYPE_PULLDOWN );
+    mySwitch = new TactSwitchDTS6V( 2 );
     mySwitch->setNoInterrupt();
 }
 ```
