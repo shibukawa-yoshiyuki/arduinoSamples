@@ -4,12 +4,11 @@
 
 |Parameter |Value |Note |
 |:---|---:|:---|
-|namespace |ElectronicComponent | |
-|template-spec |n/a | |
-|ms-decl-spec |n/a | |
+|namespace |ElectronicComponent |電子部品共通名前空間を使用する |
+|template-spec |n/a |テンプレートの指定なし |
+|ms-decl-spec |n/a |ストレージ クラスの指定なし |
 |tag |TactSwitchDTS6V | |
-|base |n/a | |
-|declarators |n/a | |
+|base |n/a |基本クラスの指定なし |
 
 ### Ⅰ-ⅱ 処理概要
 Arduino 向けタクトスイッチ DTS6V 用クラス定義  
