@@ -1,5 +1,5 @@
 //
-// Sample sketch for class Tact Switch(use Interrupt / pull-up)
+// Sample sketch for class Tact Switch(use Interrupt / pull-down)
 //
 #include "TactSwitchDTS6V.hpp"
 
@@ -16,7 +16,7 @@ void chkSwitch() {
 void setup() {
   Serial.begin( BAUD_RATE );
   mySwitch = new TactSwitchDTS6V( SIGNAL_LINE_PIN, TactSwitchDTS6V::TYPE_PULLDOWN );
-  attachInterrupt( digitalPinToInterrupt( SIGNAL_LINE_PIN ), chkSwitch, FALLING );
+  attachInterrupt( digitalPinToInterrupt( SIGNAL_LINE_PIN ), chkSwitch, RISING );
   Serial.println("Ready...");
 }
 
