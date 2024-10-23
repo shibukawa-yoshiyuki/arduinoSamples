@@ -40,7 +40,7 @@ public:
     };
     // Definition of variable
 private:
-    int           pin;                          // 対向Arduinoピン番号
+    unsigned int  pin;                          // 対向Arduinoピン番号
     int           swStatus;                     // 処理ステータス
     unsigned long detectTime;                   // ステータス変更時刻(msec)
     bool          isInterrupt;                  // 割り込み有無
@@ -54,8 +54,8 @@ private:
     int  startWait( unsigned long );            // Method:ステータス判定(to WAITING)
     int  startStandby( unsigned long);          // Method:ステータス判定(to STAND_BY)
 public:
-    TactSwitchDTS6V( int );                     // Method:コンストラクタ
-    TactSwitchDTS6V( int, int );                // Method:コンストラクタ
+    TactSwitchDTS6V( unsigned int );            // Method:コンストラクタ
+    TactSwitchDTS6V( unsigned int, int );       // Method:コンストラクタ
     void setLatency( unsigned long );           // Method:チャタリング防止レイテンシ設定
     void setHoldDown( unsigned long );          // Method:長押し判定時間閾値設定
     void setNoInterrupt();                      // Method:割り込み設定

@@ -85,7 +85,7 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
 ### Ⅱ-ⅲ.変数
 |No |ID |Access |Type |Abstruct |
 |:---:|:---|:---|:---:|:---|
-|1 |pin |private |int |対向 Arduino ピン番号 | 
+|1 |pin |private |unsigned int |対向 Arduino ピン番号 | 
 |2 |swStatus |private |int |処理ステータス | 
 |3 |detectTime |private |unsigned long |ステータス変更時刻(開始時からの経過 msec) | 
 |4 |isInterrupt |private |bool |割り込み有無 | 
@@ -115,7 +115,7 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
 
 |No |ID |Type |Value |Optional |Abstract |
 |:---:|:---|:---:|---:|:---:|:---|
-|1 |inputPin |int |- |False |Arduino側ピン番号 |
+|1 |inputPin |unsigned int |- |False |Arduino側ピン番号 |
 |2 |typePull |const int |- |True |回路区分(pull-up/pull-down) ※省略時は TYPE_PULLUP を設定 |
 
 2. 処理概要

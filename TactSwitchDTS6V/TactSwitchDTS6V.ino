@@ -6,8 +6,8 @@
 using namespace ElectronicComponent;
 
 TactSwitchDTS6V* mySwitch;
-const int BAUD_RATE = 9600;
-const int SIGNAL_LINE_PIN = 2;
+const unsigned long BAUD_RATE = 9600UL;
+const unsigned int SIGNAL_LINE_PIN = 2U;
 
 void chkSwitch() {
   mySwitch->startInterrupt();
