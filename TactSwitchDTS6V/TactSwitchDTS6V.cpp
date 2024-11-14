@@ -22,6 +22,7 @@ TactSwitchDTS6V::TactSwitchDTS6V( unsigned int inputPin ) : TactSwitchDTS6V( inp
 //          :   int typePull : 回路区分(pull-up/pull-down)
 static TactSwitchDTS6V::TactSwitchDTS6V( unsigned int inputPin, const int typePull ) {
     this->pin             = inputPin;
+    pinMode( this->pin, INPUT );
     this->swStatus        = SW_STS_STANDBY;
     this->detectTime      = 0UL;
     this->isInterrupt     = true;
