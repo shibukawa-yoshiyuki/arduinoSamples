@@ -28,13 +28,13 @@
 ### Ⅱ-ⅱ.変数
 |No |ID |Access |Type |Abstruct |
 |:---:|:---|:---|:---:|:---|
-|1 | |Private |unsigned int |4番アノードピン(赤色)番号 | 
-|2 | |Private |unsigned int |1番アノードピン(緑色)番号 | 
-|3 | |Private |unsigned int |2番アノードピン(青色)番号 | 
-|4 | |Private |int |赤色輝度 | 
-|5 | |Private |int |緑色輝度 | 
-|6 | |Private |int |青色輝度 | 
-|7 | |Private |bool |点灯状態 | 
+|1 |pinRed |Private |unsigned int |4番アノードピン(赤色)番号 | 
+|2 |pinGreen |Private |unsigned int |1番アノードピン(緑色)番号 | 
+|3 |pinBlue |Private |unsigned int |2番アノードピン(青色)番号 | 
+|4 |brightnessRed |Private |int |赤色輝度 | 
+|5 |brightnessGreen |Private |int |緑色輝度 | 
+|6 |brightnessBule |Private |int |青色輝度 | 
+|7 |isLight |Private |bool |点灯状態 | 
 
 ### Ⅱ-ⅲ.メソッド
 |No |ID |Access |Return Type |Abstract |
@@ -212,7 +212,7 @@ lightLed() をコールして赤、緑および青の輝度を指定して点灯
 turnOff() をコールすると全色消灯する
 
 ### Ⅲ-ⅲ.サンプルスケッチについて
-サンプルスケッチ ColorLedOSTA5131A.ino はカソードに抵抗を入れる前提としている。配線例は下図参照  
+サンプルスケッチ ColorLedOSTA5131A.ino はカソードに抵抗を入れる前提としている。配線例は fig3-1 参照  
 
 ![figure3-1](./img/ColorLedOSTA5131A.png)
 **fig3-1 配線例**
@@ -223,7 +223,7 @@ turnOff() をコールすると全色消灯する
 **fig3-2 サンプルスケッチの各色の輝度推移**
 
 > [!IMPORTANT]
-> 赤色 LED の Vf は緑色、青色の Vf と値が異なる(fig3-3 参照)ため輝度指定出力する値を調整している
+> 赤色 LED の V<sub>F</sub> は緑色、青色の V<sub>F</sub> と値が異なる(fig3-3 参照)ため輝度指定出力する値を調整している
 
 ![figure3-3](./img/fig3-3.png)  
 **fig3-3 入力電圧(データシートより抜粋)**
