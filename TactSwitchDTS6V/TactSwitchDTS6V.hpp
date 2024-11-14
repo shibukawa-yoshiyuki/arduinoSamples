@@ -25,8 +25,8 @@ private:
     const unsigned long DEF_LATENCY  = 30UL;    // レイテンシデフォルト値
     const unsigned long LATENCY_MAX  = 50UL;    // レイテンシ上限値
     const unsigned long DEF_HOLDDOWN = 2000UL;  // 長押し判定時間閾値デフォルト値
-    const unsigned long HOLDDOWN_MIN = 2000UL;  // 長押し判定時間閾値下限値
-    const unsigned long HOLDDOWN_MAX = 2000UL;  // 長押し判定時間閾値上限値
+    const unsigned long HOLDDOWN_MIN = 1000UL;  // 長押し判定時間閾値下限値
+    const unsigned long HOLDDOWN_MAX = 8000UL;  // 長押し判定時間閾値上限値
 public:
     enum cercitType {
         TYPE_PULLUP                  = 0,       // 回路区分(プルアップ)
