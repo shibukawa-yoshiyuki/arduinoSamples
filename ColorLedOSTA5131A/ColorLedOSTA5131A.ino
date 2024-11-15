@@ -4,21 +4,29 @@
 #include <math.h>
 #include "ColorLedOSTA5131A.hpp"
 
-//using namespace ElectronicComponent;
+using namespace ElectronicComponent;
+
+const unsigned int RED_OUT_PIN   = 9U;
+const int INI_RED_MIN   = 52;
+const int INI_RED_MAX   = 171;
+const unsigned int GREEN_OUT_PIN = 10U;
+const int INI_GREEN_MIN = 22;
+const int INI_GREEN_MAX = 111;
+const unsigned int BULE_OUT_PIN  = 11U;
+const int INI_BULE_MIN  = 41;
+const int INI_BULE_MAX  = 73;
 
 ColorLedOSTA5131A* myLed;
-int redVal   = 0x00;  // 輝度(赤)
-int greenVal = 0x00;  // 輝度(緑)
-int blueVal  = 0x00;  // 輝度(青)
-int i        = 52;    // 周期変数(赤)
-int j        = 111;   // 周期変数(緑)
-int k        = 41;    // 周期変数(青)
+int redVal   = 0x00;
+int greenVal = 0x00;
+int blueVal  = 0x00;
+int i        = INI_RED_MIN;
+int j        = INI_GREEN_MAX;
+int k        = INI_BULE_MIN;
 
 void setup() {
-  // 初期化
-  myLed = new ColorLedOSTA5131A( 9, 10, 11 );
+  myLed = new ColorLedOSTA5131A( RED_OUT_PIN, GREEN_OUT_PIN, BULE_OUT_PIN );
 
-  // 単色点灯(赤→緑→青→消灯)
   myLed->lightRed();
   delay( 2000 );
   myLed->lightGreen();
@@ -30,31 +38,27 @@ void setup() {
 }
 
 void loop() {
-  // 輝度の計算(赤)
   redVal   = (int)round( sin( (double)i *  3.0 * M_PI / 180.0 ) * 36.0 + 36.0 );
-  if( i < 171 ) {
+  if( i < INI_RED_MAX ) {
     i++;
   } else {
-    i = 52;
+    i = INI_RED_MIN;
   }
 
-  // 輝度の計算(緑)
   greenVal = (int)round( sin( (double)j *  4.0 * M_PI / 180.0 ) * 127.0 + 127.0 );
-  if( j > 22 ) {
+  if( j > INI_GREEN_MIN ) {
     j--;
   } else {
-    j = 111;
+    j = INI_GREEN_MAX;
   }
 
-  // 輝度の計算(青)
   blueVal  = (int)round( sin( (double)k * 11.0 * M_PI / 180.0 ) * 127.0 + 127.0 );
-  if( k < 73 ) {
+  if( k < INI_BULE_MAX ) {
     k++;
   } else {
-    k = 41;
+    k = INI_BULE_MIN;
   }
 
-  // 輝度を指定して点灯
   myLed->lightLed( redVal, greenVal, blueVal );
   delay( 200 );
 }
