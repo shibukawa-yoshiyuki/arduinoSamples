@@ -22,13 +22,13 @@ private:
     bool         isLight;                   // 点灯状態
     // Definition of method
 public:
-    LedOSR5JA5E34B( unsgined int );         // method:コンストラクタ
-    void lightLEDFull();                    // method:点灯
-    void lightLED( int );                   // method:点灯(輝度指定)
-    void turnOff();                         // method:消灯
-    bool isLighting();                      // method:点灯状態取得
-    int  getPin();                          // method:getter(pin)
-    int  getBrightness();                   // method:getter(brightness)
+    LedOSR5JA5E34B( unsigned int );         // method:コンストラクタ
+    void         lightLEDFull();            // method:点灯
+    void         lightLED( int );           // method:点灯(輝度指定)
+    void         turnOff();                 // method:消灯
+    bool         isLighting();              // method:点灯状態取得
+    unsigned int getPin();                  // method:getter(pin)
+    int          getBrightness();           // method:getter(brightness)
 };
 }
 #endif

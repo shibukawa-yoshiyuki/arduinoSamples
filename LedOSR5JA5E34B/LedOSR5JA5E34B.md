@@ -48,11 +48,11 @@ Arduino 向け LED OSR5JA5E34B 用クラス定義
 
 |No |ID |Type |Value |Optional |Abstract |
 |:---:|:---|:---:|---:|:---:|:---|
-|1 |pin |unsigned int |- |False |対向ピン番号 |
+|1 |pinNo |unsigned int |- |False |対向ピン番号 |
 
 2. 処理概要
 * メンバ 輝度 の値を 0x00 にする
-* 対向ピンの値に引数 pin の値を設定する
+* 対向ピンの値に引数 pinNo の値を設定する
 * 点灯状態を false にする
 
 > [!NOTE]
