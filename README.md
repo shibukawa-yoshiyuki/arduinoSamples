@@ -4,7 +4,7 @@
 電子部品を Arduino Uno で利用するためのクラスモジュールとサンプルスケッチが含まれています。
 このリポジトリには以下の部品用のクラスモジュールが含まれます。
 
-1. 赤色 LED
+1. [赤色 LED](LedOSR5JA5E34B/LedOSR5JA5E34B.md)
 2. [フルカラー LED](ColorLedOSTA5131A/ColorLedOSTA5131A.md)
 3. 7 セグメント LED
 4. シフトレジスタ
