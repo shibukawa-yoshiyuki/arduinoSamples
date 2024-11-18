@@ -37,7 +37,12 @@ void LedOSR5JA5E34B::lightLEDFull() {
 // Argument :   int brightness 輝度
 // Return   :   n/a
 void LedOSR5JA5E34B::lightLED( int brightness ) {
-    this->brightness = brightness;
+  	// 引数検査し範囲内(0x00～0xff)ならば更新
+  	if( brightness >= LED_OSR5JA5E34B_LOW && brightness <= LED_OSR5JA5E34B_HIGH ) {
+        this->brightness = brightness;
+  	} else {
+        return;
+    }
     analogWrite( this->pin, this->brightness );
     this->isLight = true;
 }

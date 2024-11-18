@@ -51,12 +51,19 @@ void ColorLedOSTA5131A::lightLed( int red, int green, int blue ) {
   	if( blue  >= COLOR_LED_OSTA5131A_LOW && blue  <= COLOR_LED_OSTA5131A_HIGH ) {
     	this->brightnessBule  = blue;
   	}
-  	// 赤/緑/青を点灯
-  	analogWrite( this->pinRed,   this->brightnessRed );
-  	analogWrite( this->pinGreen, this->brightnessGreen );
-  	analogWrite( this->pinBlue,  this->brightnessBule );
-  	// 点灯状態を点灯に
-  	this->isLight           = true;
+  	// 輝度が指定されている場合は赤/緑/青を点灯
+	if( this->brightnessRed   > COLOR_LED_OSTA5131A_LOW 
+	 || this->brightnessGreen > COLOR_LED_OSTA5131A_LOW 
+	 || this->brightnessBule  > COLOR_LED_OSTA5131A_LOW ) {
+  		analogWrite( this->pinRed,   this->brightnessRed );
+  		analogWrite( this->pinGreen, this->brightnessGreen );
+  		analogWrite( this->pinBlue,  this->brightnessBule );
+  		// 点灯状態を点灯にする
+  		this->isLight         = true;
+	} else {
+  		// 全て0x00の場合は点灯状態を消灯にする
+  		this->isLight         = false;
+	}
 }
 
 //
@@ -68,7 +75,12 @@ void ColorLedOSTA5131A::lightRed() {
   	this->turnOff();
   	// 赤を点灯
   	this->brightnessRed   = COLOR_LED_OSTA5131A_HIGH;
-  	digitalWrite( this->pinRed,   HIGH );
+  	digitalWrite( this->pinRed,   this->brightnessRed );
+	// 赤以外は消灯
+  	this->brightnessGreen = COLOR_LED_OSTA5131A_LOW;
+  	digitalWrite( this->pinGreen, this->brightnessGreen );
+  	this->brightnessBule  = COLOR_LED_OSTA5131A_LOW;
+  	digitalWrite( this->pinBlue,  this->brightnessBule );
   	// 点灯状態を点灯に
   	this->isLight         = true;
 }
@@ -82,7 +94,12 @@ void ColorLedOSTA5131A::lightGreen() {
   	this->turnOff();
   	// 緑を点灯
   	this->brightnessGreen = COLOR_LED_OSTA5131A_HIGH;
-  	digitalWrite( this->pinGreen, HIGH );
+  	digitalWrite( this->pinGreen, this->brightnessGreen );
+	// 緑以外は消灯
+  	this->brightnessRed   = COLOR_LED_OSTA5131A_LOW;
+  	digitalWrite( this->pinRed,   this->brightnessRed );
+  	this->brightnessBule  = COLOR_LED_OSTA5131A_LOW;
+  	digitalWrite( this->pinBlue,  this->brightnessBule );
   	// 点灯状態を点灯に
   	this->isLight         = true;
 }
@@ -96,7 +113,12 @@ void ColorLedOSTA5131A::lightBlue() {
   	this->turnOff();
   	// 青を点灯
   	this->brightnessBule  = COLOR_LED_OSTA5131A_HIGH;
-  	digitalWrite( this->pinBlue,  HIGH );
+  	digitalWrite( this->pinBlue,  this->brightnessBule );
+	// 青以外は消灯
+  	this->brightnessRed   = COLOR_LED_OSTA5131A_LOW;
+  	digitalWrite( this->pinRed,   this->brightnessRed );
+  	this->brightnessGreen = COLOR_LED_OSTA5131A_LOW;
+  	digitalWrite( this->pinGreen, this->brightnessGreen );
   	// 点灯状態を点灯に
   	this->isLight         = true;
 }
@@ -109,11 +131,11 @@ void ColorLedOSTA5131A::lightBlue() {
 void ColorLedOSTA5131A::turnOff() {
   	// 赤/緑/青を消灯
   	this->brightnessRed   = COLOR_LED_OSTA5131A_LOW;
-  	analogWrite( this->pinRed,   this->brightnessRed );
+  	digitalWrite( this->pinRed,   this->brightnessRed );
   	this->brightnessGreen = COLOR_LED_OSTA5131A_LOW;
-  	analogWrite( this->pinGreen, this->brightnessGreen );
+  	digitalWrite( this->pinGreen, this->brightnessGreen );
   	this->brightnessBule  = COLOR_LED_OSTA5131A_LOW;
-  	analogWrite( this->pinBlue,  this->brightnessBule );
+  	digitalWrite( this->pinBlue,  this->brightnessBule );
   	// 点灯状態を消灯に
   	this->isLight         = false;
 }
