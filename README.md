@@ -6,7 +6,7 @@
 
 1. [赤色 LED](LedOSR5JA5E34B/LedOSR5JA5E34B.md)
 2. [フルカラー LED](ColorLedOSTA5131A/ColorLedOSTA5131A.md)
-3. [7 セグメント LED](Red7SegmentLed551SRD/Red7SegmentLed551SRD.md)
+3. [7 セグメント LED](Red7SegmentLedC551SRD/Red7SegmentLedC551SRD.md)
 4. シフトレジスタ<!--[シフトレジスタ](ShiftRegister74HC595/ShiftRegister74HC595.md)-->
 5. [タクトスイッチ](TactSwitchDTS6V/TactSwitchDTS6V.md)
 6. 半固定抵抗器<!--[半固定抵抗器](SemiFixedResistorTSR3386T/SemiFixedResistorTSR3386T.md)-->
