@@ -14,7 +14,7 @@
 8. 赤外線測距モジュール<!--[赤外線測距モジュール](InfraredSensorGP2Y0A21YK/InfraredSensorGP2Y0A21YK.md)-->
 9. 超音波測距モジュール<!--[超音波測距モジュール](UltrasonicSensorHCSR04/UltrasonicSensorHCSR04.md)-->
 10. 圧電スピーカー<!--[圧電スピーカー](SpeakerPT08Z185R/SpeakerPT08Z185R.md)-->
-11. サーボモーター<!--[サーボモーター](MicroServoMG90S/MicroServoMG90S.md)-->
+11. [サーボモーター](MicroServoMG90S/MicroServoMG90S.md)
 12. GNSS 測位モジュール<!--[GNSS 測位モジュール](GNSSReceiverGT502MGGN/GNSSReceiverGT502MGGN.md)-->
 13. 加速度センサー<!--[加速度センサー](AEBME280/AEBME280.md)-->
 14. 温湿度・気圧センサー<!--[温湿度・気圧センサー](KXR942050/KXR942050.md)-->
