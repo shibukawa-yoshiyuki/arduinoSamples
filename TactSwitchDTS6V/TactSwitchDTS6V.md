@@ -267,7 +267,7 @@ TactSwitchDTS6V* mySwitch;
 
 void setup() {
     mySwitch = new TactSwitchDTS6V( 2U, TactSwitchDTS6V::TYPE_PULLDOWN );
-    attachInterrupt( digitalPinToInterrupt( SIGNAL_LINE_PIN ), (void (*)())&mySwitch->startInterrupt, RISING );
+    attachInterrupt( digitalPinToInterrupt( 2U ), (void (*)())&mySwitch->startInterrupt, RISING );
 }
 ```
 
@@ -298,7 +298,7 @@ void loop() {
 TactSwitchDTS6V* mySwitch;
 
 void setup() {
-    mySwitch = new TactSwitchDTS6V( 2 );
+    mySwitch = new TactSwitchDTS6V( 2U );
     mySwitch->setNoInterrupt();
 }
 ```
