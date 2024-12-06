@@ -157,6 +157,7 @@ $P =  \left( \frac{60000000}{tempo} \cdot \frac{1}{8} \right)$
 
 #### Ⅱ-ⅳ-5.startPlaying()
 1. 引数  
+
 |No |ID |Type |Value |Optional |Abstract |
 |:---:|:---|:---:|---:|:---:|:---|
 |1 |isLoop |bool |- |true |リピート再生有無の指定 |

@@ -12,7 +12,8 @@
 ## Ⅱ.メンバ定義
 ### Ⅱ-ⅰ.列挙定数
 1. musicalScale  
-fig2-1 の音階 C3 から B5 までに該当する周波数を定義
+fig2-1 の音階 C3 から B5 までに該当する周波数を定義  
+
 ![figure2-1](img/Octaves.png)  
 **fig2-1 階名対照表([Wikipedia](https://ja.wikipedia.org/wiki/%E9%9F%B3%E5%90%8D%E3%81%A8%E9%9A%8E%E5%90%8D#/media/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Octaves.png)より引用)**  
 
