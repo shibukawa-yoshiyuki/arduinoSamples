@@ -66,7 +66,7 @@ Arduino 向け圧電スピーカ PT08-Z185R 用クラス定義
 |2 |lengthBeat |private |unsigned long |1/8 拍の長さ(マイクロ秒) | 
 |3 |musicalData |private |MusicalComposition::musicData* |楽曲データ | 
 |4 |counter |private |int |音程切替用カウンタ | 
-|5 |insicator |private |int |楽曲データ用インジケータ | 
+|5 |indicator |private |int |楽曲データ用インジケータ | 
 |6 |isLoop |private |bool |再生ループ指定(true でループ再生、falseで一回のみ再生) | 
 
 > [!NOTE]
@@ -107,7 +107,7 @@ Arduino 向け圧電スピーカ PT08-Z185R 用クラス定義
 |lengthBeat |tempoInMicroseconds() の戻り値 |1/8 拍あたりのマイクロ秒 |
 |musicalData |musicalData | |
 |counter |0 | |
-|insicator |0 | |
+|indicator |0 | |
 |isLoop |true | |
 
 #### Ⅱ-ⅳ-2.alarmSwitchingDecision()
