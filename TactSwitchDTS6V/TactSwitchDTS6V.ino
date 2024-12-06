@@ -10,16 +10,12 @@ const unsigned long BAUD_RATE       = 9600UL;
 const unsigned int  SIGNAL_LINE_PIN = 2U;
 const unsigned int  ONBOARD_LED     = 13U;
 
-void chkSwitch() {
-  mySwitch->startInterrupt();
-}
-
 void setup() {
   Serial.begin( BAUD_RATE );
   Serial.println("Ready...");
 
   mySwitch = new TactSwitchDTS6V( SIGNAL_LINE_PIN, TactSwitchDTS6V::TYPE_PULLDOWN );
-  attachInterrupt( digitalPinToInterrupt( SIGNAL_LINE_PIN ), chkSwitch, RISING );
+  attachInterrupt( digitalPinToInterrupt( SIGNAL_LINE_PIN ), (void (*)())&mySwitch->startInterrupt, RISING );
 
   pinMode( ONBOARD_LED, OUTPUT );
   digitalWrite( ONBOARD_LED, LOW );

@@ -260,18 +260,14 @@ Arduino 向けタクトスイッチ DTS6V 用クラス定義
 #### Ⅲ-ⅱ-1.外部割込み利用する場合
 
 1. setup() 内でクラスインスタンスを生成する。ピン番号および回路区分を指定すること(プルダウン抵抗を用いた場合 TYPE_PULLDOWN 、プルアップ抵抗を用いた場合省略するか TYPE_PULLUP を指定する)
-2. 外部割込みを定義し、割り込み時動作する関数から startInterrupt() メソッドをコールする
+2. 外部割込みを定義し、割り込み時動作する関数として startInterrupt() メソッドをコールする
 
 ```
 TactSwitchDTS6V* mySwitch;
 
 void setup() {
-    mySwitch = new TactSwitchDTS6V( 2, TactSwitchDTS6V::TYPE_PULLDOWN );
-    attachInterrupt( digitalPinToInterrupt( 2 ), chkSwitch, RISING );
-}
-
-void chkSwitch() {
-    mySwitch->startInterrupt();
+    mySwitch = new TactSwitchDTS6V( 2U, TactSwitchDTS6V::TYPE_PULLDOWN );
+    attachInterrupt( digitalPinToInterrupt( SIGNAL_LINE_PIN ), (void (*)())&mySwitch->startInterrupt, RISING );
 }
 ```
 
