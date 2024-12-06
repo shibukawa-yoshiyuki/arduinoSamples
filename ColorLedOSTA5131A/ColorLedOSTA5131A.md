@@ -53,6 +53,9 @@ Arduino 向けフルカラー LED OSTA5131A 用クラス定義
 |12 |getBrightnessGreen |Public |int |1番アノードピンへの現在の出力輝度を取得 |
 |13 |getBrightnessBlue |Public |int |2番アノードピンへの現在の出力輝度を取得 |
 
+> [!NOTE]
+> デストラクタなし  
+
 #### Ⅱ-ⅲ-1.ColorLedOSTA5131A()
 1. 引数
 
@@ -71,9 +74,6 @@ Arduino 向けフルカラー LED OSTA5131A 用クラス定義
 * 1 番アノード(緑)対向ピンの値に引数 greenPin の値を設定する
 * 2 番アノード(青)対向ピンの値に引数 bulePin の値を設定する
 * 点灯状態を false にする
-
-> [!NOTE]
-> デストラクタなし  
 
 #### Ⅱ-ⅲ-2.lightLed()
 1. 引数

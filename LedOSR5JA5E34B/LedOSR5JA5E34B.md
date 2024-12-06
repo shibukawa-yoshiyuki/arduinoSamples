@@ -43,6 +43,9 @@ Arduino 向け LED OSR5JA5E34B 用クラス定義
 |6 |getPin |Public |unsigned int |ゲッタ(ピン) |
 |7 |getBrightness |Public |int |ゲッタ(輝度) |
 
+> [!NOTE]
+> デストラクタなし  
+
 #### Ⅱ-ⅳ-1.LedOSR5JA5E34B()
 1. 引数
 
@@ -54,9 +57,6 @@ Arduino 向け LED OSR5JA5E34B 用クラス定義
 * メンバ 輝度 の値を 0x00 にする
 * 対向ピンの値に引数 pinNo の値を設定する
 * 点灯状態を false にする
-
-> [!NOTE]
-> デストラクタなし  
 
 #### Ⅱ-ⅳ-2.lightLEDFull()
 1. 引数  

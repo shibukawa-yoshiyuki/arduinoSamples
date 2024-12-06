@@ -40,6 +40,9 @@ Arduino 向けサーボモータ MG90S 用クラス定義
 |3 |getPinNo |public |unsigned int |getter(制御ピン番号) |
 |4 |getDegree |public |int |getter(指定角度) |
 
+> [!NOTE]
+> デストラクタなし  
+
 #### Ⅱ-ⅲ-1.MicroServoMG90S()
 1. 引数
 

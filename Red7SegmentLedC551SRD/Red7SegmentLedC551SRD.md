@@ -98,6 +98,9 @@ Arduino 向け 7 セグメント LED C-551SRD-NW 用クラス定義
 |21 |isBlightG |public |bool |getter(G点灯状態) |
 |22 |isBlightDP |public |bool |getter(DP点灯状態) |
 
+> [!NOTE]
+> デストラクタなし  
+
 #### Ⅱ-ⅳ-1.Red7SegmentLed551SRD()
 1. 引数
 
@@ -145,7 +148,7 @@ Arduino 向け 7 セグメント LED C-551SRD-NW 用クラス定義
 |brightness[7] |false |LED-DP の点灯状態(消灯) |
 
 > [!WARNING]
-> 3 番と 8 番がカソードとなるが、内部で結線されているためどちらか一つのみ使用すること(fig2-1 参照)  
+> 本部品はカソードコモンであり、3 番と 8 番がカソードとなるが内部で結線されているためどちらか一つのみ使用すること(fig2-1 参照)  
 
 ![figure2-2](./img/fig2-1.png)  
 **fig2-1 カソードの結線(データシートより抜粋)**  
