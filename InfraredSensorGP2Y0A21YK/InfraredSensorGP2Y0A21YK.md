@@ -100,7 +100,7 @@ Arduino 向け赤外線測距センサ GP2Y0A21YK 用クラス定義
 
 * アナログ入力ピンからメンバ アナログデジタル変換値 の値を取得する
 * メンバ アナログデジタル変換値 ($ADC$) から換算電圧 ($V$) を以下式で算出してメンバ アナログ入力電圧 に格納する  
-$V = ADC$
+$V = \left( \frac{ADC}{1024} \cdot V_{ref} \right)$
 * distanceConversion() メソッドをコールしてメンバ 測距距離 に格納する
 
 #### Ⅱ-ⅲ-6.distanceConversion()
@@ -119,7 +119,32 @@ $D = 26.488V^{-1.209}$
 このクラスは Arduino での利用を想定しているため、他のマイコンボードでの動作は保証しない
 
 ### Ⅲ-ⅱ.利用方法
-#### Ⅲ-ⅱ-1.外部割込み利用する場合
+#### Ⅲ-ⅱ-1.初期化
+1. setup() 内でクラスインスタンスを生成する。アナログ入力ピン番号を指定すること
+
+```
+InfraredSensorGP2Y0A21YK* myIfSensor;
+myIfSensor = new InfraredSensorGP2Y0A21YK( A0 );
+```
+
+#### Ⅲ-ⅱ-2.計測して値を取得
+1. 
+
+```
+float distance = myIfSensor->acquireMeasurementData();
+```
+
+2. 
+
+```
+float voltage = myIfSensor->acquireMeasuredVoltage();
+```
+
+3. 
+
+```
+int adcValue = myIfSensor->acquireADCValue();
+```
 
 ### Ⅲ-ⅲ.サンプルスケッチ
 ![figure3-1](img/InfraredSensorGP2Y0A21YK.png)  
