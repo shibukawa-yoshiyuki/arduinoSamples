@@ -25,6 +25,8 @@ Arduino 向け赤外線測距センサ GP2Y0A21YK 用クラス定義
 |:---:|:---|:---|:---:|---:|:---|
 |1 |RANGE_DATA_CONVERSION |private |float |26.488F |測距データ換算用係数 |
 |2 |ORDER_DATA_CONVERSION |private |float |-1.209F |測距データ換算用次数 |
+|3 |ADC_RESOLUTION |private |float |1024.0F |ADC 分解能 |
+|4 |REFERENCE_VOLTAGE |private |float |5.0F |基準電圧 |
 
 > [!IMPORTANT]
 > 係数および次数は実測値から算出しているため、機材によっては変更する必要が生じる場合がある点に注意 
@@ -128,19 +130,19 @@ myIfSensor = new InfraredSensorGP2Y0A21YK( A0 );
 ```
 
 #### Ⅲ-ⅱ-2.計測して値を取得
-1. 
+1. 測距距離を取得する場合、acquireMeasurementData() をコールする
 
 ```
 float distance = myIfSensor->acquireMeasurementData();
 ```
 
-2. 
+2. 換算電圧を取得する場合、acquireMeasuredVoltage() をコールする
 
 ```
 float voltage = myIfSensor->acquireMeasuredVoltage();
 ```
 
-3. 
+3. ADC 値を取得する場合、acquireADCValue() をコールする
 
 ```
 int adcValue = myIfSensor->acquireADCValue();
