@@ -138,7 +138,7 @@ Arduino 向け圧電スピーカ PT08-Z185R 用クラス定義
 
 2. 処理概要
 引数のテンポ tempo から 1/8 拍(32 分音符の長さ)あたりのマイクロ秒 P を算出して返す  
-$P =  \left( \frac{60000000}{tempo} \cdot \frac{1}{8} \right)$
+$$P =  \left( \frac{60000000}{tempo} \cdot \frac{1}{8} \right)$$
 
 > [!IMPORTANT]
 > 項用の定数として MICROSECONDS_PER_MINUTE および THIRTY_SECOND_NOTE を利用すること
