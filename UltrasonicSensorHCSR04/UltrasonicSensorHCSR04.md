@@ -16,15 +16,23 @@ Arduino 向け超音波距離センサ用クラス定義
 1. 測距タイミングは ECHO からの入力ピンに対する割り込み処理を利用する
 1. TRIG および ECHO 動作タイミングは fig1-1 を参照
 
-![fig1-1](img/fig1-1.png)
+![fig1-1](img/fig1-1.png)  
 **fig1-1 超音波距離センサ動作タイミングチャート**
 
 ## Ⅱ.メンバ定義
 ### Ⅱ-ⅰ.定数
 |No |ID |Access |Type |Value |Abstruct |
 |:---:|:---|:---|:---:|---:|:---|
-|1 |TIME_DISTANCE_CONV_COEFFICIENT |private |float |58.1395F |時間距離変換用係数 |
-|2 |TRIGGER_SIGNAL_TRANSMISSION_TIME |private |unsigned long |10UL |トリガー信号発信時間 |
+|1 |TIME_DISTANCE_CONV_COEFFICIENT |private |float |58.73715F |時間距離変換用係数 |
+|2 |TRIGGER_SIGNAL_TRANSMISSION_TIME |private |unsigned long |10UL |トリガー信号発信時間(μsec) |
+|3 |TRIGGER_PROHIBITION_TIME |private |unsigned long |10UL |トリガー信号発信禁止時間(msec) |
+
+> [!TIP]
+> 時間距離変換用係数について、音速は 34050(cm/sec) となる(1 atm/15 °C の場合)ため経過時間 $t$ (μsec)から距離 $D$ (cm)を算出する以下式
+> $$D = \biggl(\frac{34050}{1000000} \cdot \frac{t}{2}\biggr)$$
+> より
+> $$D = \biggl(\frac{t}{58.73715}\biggr)$$
+> が導出されるため、除数として 58.73715F と定義する
 
 ### Ⅱ-ⅱ.変数
 |No |ID |Access |Type |Abstruct |
@@ -76,7 +84,8 @@ Arduino 向け超音波距離センサ用クラス定義
   - 測定開始時間に現在のマイクロ秒を格納する 
 * ECHO ピンの状態が HIGH → LOW の場合
   - 現在時から測定開始時間を引き、計測時間を取得する
-  - 計測時間から距離を算出し、メンバ 測定距離 に格納する
+  - 以下の式で計測時間 $t$ から距離 $D$ を算出し、メンバ 測定距離 に格納する  
+  $$D = \biggl(\frac{t}{58.73715}\biggr)$$
   - 現在時(ミリ秒)をメンバ 測定時間 に格納する
 
 #### Ⅱ-ⅲ-3.emitTrigger()
@@ -85,7 +94,7 @@ Arduino 向け超音波距離センサ用クラス定義
 
 2. 処理概要
 
-* 前回のトリガー送信から 200ms 超経過している場合、TRIG ピンを TRIGGER_SIGNAL_TRANSMISSION_TIME 分 HIGH にする
+* 前回のトリガー送信から 200ms 超経過している場合、TRIG ピンを TRIGGER_SIGNAL_TRANSMISSION_TIME の間 HIGH にする
 * 前回のトリガー送信から 200ms 以内の場合何もしない
 
 #### Ⅱ-ⅲ-4.getDistance()

@@ -102,7 +102,7 @@ Arduino 向け赤外線測距センサ GP2Y0A21YK 用クラス定義
 
 * アナログ入力ピンからメンバ アナログデジタル変換値 の値を取得する
 * メンバ アナログデジタル変換値 ($ADC$) から換算電圧 ($V$) を以下式で算出してメンバ アナログ入力電圧 に格納する  
-$$V = \left( \frac{ADC}{1024} \cdot V_{ref} \right)$$
+$$V = \biggl( \frac{ADC}{1024} \cdot V_{ref} \biggr)$$
 * distanceConversion() メソッドをコールしてメンバ 測距距離 に格納する
 
 #### Ⅱ-ⅲ-6.distanceConversion()
