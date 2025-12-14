@@ -15,10 +15,9 @@
 9. [超音波測距モジュール](UltrasonicSensorHCSR04/UltrasonicSensorHCSR04.md)
 10. [圧電スピーカ](SpeakerPT08Z185R/SpeakerPT08Z185R.md)
 11. [サーボモータ](MicroServoMG90S/MicroServoMG90S.md)
-12. 静電容量センサ<!--[静電容量センサ](.md)-->
-13. GNSS 測位モジュール<!--[GNSS 測位モジュール](GNSSReceiverGT502MGGN/GNSSReceiverGT502MGGN.md)-->
-14. 加速度センサ<!--[加速度センサ](AEBME280/AEBME280.md)-->
-15. 温湿度・気圧センサ<!--[温湿度・気圧センサ](KXR942050/KXR942050.md)-->
+12. GNSS 測位モジュール<!--[GNSS 測位モジュール](GNSSReceiverGT502MGGN/GNSSReceiverGT502MGGN.md)-->
+13. 加速度センサ<!--[加速度センサ](AEBME280/AEBME280.md)-->
+14. 温湿度・気圧センサ<!--[温湿度・気圧センサ](HumidityPressureSensorBME280/BME280.md)-->
 
 ## 名前空間
 
